@@ -1,0 +1,501 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "5397d957-98a1-458c-8b17-1da1abe8b5f3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2.1.2+cpu\n",
+      "1.26.1\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import torch\n",
+    "import copy\n",
+    "print(torch.__version__)\n",
+    "print(np.__version__)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3ca193d2-4fba-4bd5-bd46-24662c8aead1",
+   "metadata": {},
+   "source": [
+    "https://pytorch.org/get-started/locally/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2bb86c11-7d6d-477d-9f77-d634f706b88d",
+   "metadata": {},
+   "source": [
+    "# Tensor Creation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "0dfe2073-9978-4414-bdcb-a43d7b6cfa4b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1. 1.]\n",
+      " [1. 1.]\n",
+      " [1. 1.]\n",
+      " [1. 1.]\n",
+      " [1. 1.]]\n",
+      "tensor([[4, 4, 4],\n",
+      "        [4, 4, 4]])\n",
+      "torch.float32\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = torch.ones((5,2))\n",
+    "b = np.ones((5,2))\n",
+    "print(b)\n",
+    "c = torch.full((2,3), 4)\n",
+    "print(c)\n",
+    "d = torch.empty((0,3), )\n",
+    "print(d.dtype)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "fec4c747-2621-4872-96ee-635ee648409c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "cpu\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "tensor([], size=(0, 3))"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(d.device)\n",
+    "d.to('cpu')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "33ab2849-ca49-4f19-ad57-292b1b191514",
+   "metadata": {},
+   "source": [
+    "# Tensor Properties"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "22682510-a743-4eb6-9de8-233194cd8e16",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([5, 5])\n",
+      "torch.float32\n",
+      "torch.Size([5, 5])\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = torch.ones((5,5))\n",
+    "print(a.shape)\n",
+    "print(a.dtype)\n",
+    "print(a.size())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "004e258e-afcc-426a-b9cd-84d3160ff837",
+   "metadata": {},
+   "source": [
+    "# Type Casting"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4010ad2b-5fb5-4088-bb83-e7545ff0b8af",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(a.dtype)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "bc2c74a5-9953-4a6f-8261-5c7cb52c22e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "b = a.to(torch.float64)\n",
+    "print(b.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1c2e967f-57e2-44b4-babe-baf485901931",
+   "metadata": {},
+   "source": [
+    "# Change Shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "1d2729fa-3daa-4ede-9a4f-5484cad66892",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])\n",
+      "tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])\n",
+      "tensor([  0,   1,   2,   3,   4, 100,   6,   7,   8,   9,  10,  11])\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = torch.arange(12)\n",
+    "#a = a.reshape((3,4))\n",
+    "b = copy.deepcopy(a)\n",
+    "c = torch.clone(a)\n",
+    "print(a)\n",
+    "\n",
+    "print(b)\n",
+    "\n",
+    "a[5] = 100\n",
+    "print(a)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c76eb3da-9db7-4bfb-86f1-bf2d3eb173b8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e878bccb-fbdf-4df1-a212-981a2f83ee2e",
+   "metadata": {},
+   "source": [
+    "# Broadcasting"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "817be9f0-79a9-409a-a9c7-202c802b2cd6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((4)) # (1,4)\n",
+    "b = torch.ones((1,4))\n",
+    "out = torch.add(a,b) # or just a + b.\n",
+    "print(out)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b49e6286-71b8-48e8-98a6-1086117199b4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((4))  # (1,4) -> (4,4)\n",
+    "b = torch.ones((4,1))# (4,1) -> (4,4)\n",
+    "print(a)\n",
+    "print(b)\n",
+    "\n",
+    "c = a+b\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "165c20ff-c65f-47d6-82f5-52f4339b349c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((1,7))  # (1,1,1,7) ->(5,2,3,7)\n",
+    "b = torch.ones((5,2,3,7))# (5,2,3,7) -> (5,2,3,7)\n",
+    "c = a+b\n",
+    "print(c.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "7445164b-61ac-4e0f-98eb-2f0437ba4aeb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "torch.Size([7])\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = torch.ones((1,7))\n",
+    "#a = a.unsqueeze(1)\n",
+    "b = a.squeeze(0)\n",
+    "print(b.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5bba3c86-562a-448a-a2d8-50ea9e17a7ff",
+   "metadata": {},
+   "source": [
+    "# Matrix multiplication"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d186ca04-8f60-47d7-a988-1e99fc0173bb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((7))\n",
+    "b = torch.ones((7))\n",
+    "\n",
+    "c = torch.dot(a,b)\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ed8c92c7-7e64-4b24-b3ee-9eb2620f627f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((1, 7))\n",
+    "b = torch.ones((1, 7))\n",
+    "b = torch.transpose(b, 0, 1)\n",
+    "print(a.shape)\n",
+    "print(b.shape)\n",
+    "c = torch.mm(a,b)\n",
+    "print(c.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3a0d04bf-a4cb-431f-9e23-540492151653",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Batched matrix multiplication. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b6fea43a-b340-494c-9b2e-1c37dc5b1eb5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((3, 1, 7))\n",
+    "b = torch.ones((3, 7, 1))\n",
+    "\n",
+    "c = torch.bmm(a,b)\n",
+    "print(c.shape)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c4e5d9e7-6df2-4110-8074-b3fd5563bf45",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Shapes don't fit"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "41be9e77-421b-4f18-b139-9998b169241d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = torch.ones((3, 1, 4, 7))\n",
+    "b = torch.transpose(a, 2, 3)\n",
+    "print(b.shape)\n",
+    "c = torch.permute(a, (1, 2, 0, 3))\n",
+    "print(c.shape)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1f07a193-ee14-4031-a2dc-54ea2d908646",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Einsum"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "047effda-9db7-4ef3-8a2a-2bad521aeda6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "tensor([[[ 0.3634, -0.8505, -0.3705, -1.9248],\n",
+       "         [-1.4009,  2.2762,  1.4847,  2.5384]],\n",
+       "\n",
+       "        [[-3.2117,  4.2808, -6.6444,  4.1490],\n",
+       "         [-0.7696, -0.5005, -0.4986,  2.1788]],\n",
+       "\n",
+       "        [[ 3.1206, -0.0941,  1.1521, -0.9304],\n",
+       "         [ 0.3350, -2.1654, -1.6634, -2.8544]]])"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "A = torch.randn(3, 2, 5)\n",
+    "B = torch.randn(3, 5, 4)\n",
+    "torch.einsum('bij,bjk->bik', A, B)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "9e7f3659-1314-4419-8083-0eb7c4847b01",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    " a = torch.ones(5)\n",
+    "b = a.detach().cpu().numpy()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "582aebd9-d758-416e-89bf-9e6a255ce8f2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1. 1. 1. 1. 1.]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "54c9da19-d954-4b3e-a92e-6b80f8e7654f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(a.device)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7aef4c3c-5e8a-4d4c-9bb1-e999658cd975",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(b.device)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "df754984-2ac5-405a-b13b-1b3d6fde2b10",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
