@@ -1,0 +1,146 @@
+{'_root_dir': '/itf-fi-ml/home/danif/mand2/mandatory2_data', 'train_caption_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/annotations/captions_train2017.json', 'val_caption_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/annotations/captions_val2017.json', 'val_images_dir': '/itf-fi-ml/home/danif/mand2/mandatory2_data/val2017', 'resnet50_features_train_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/coco_train_resnet18_layer4_features.pkl', 'resnet50_features_val_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/coco_val_resnet18_layer4_features.pkl', 'max_caption_length': 30, 'embedding_size': 512, 'hidden_size': 512, 'use_attention': True, 'feature_size': 512, 'num_layers': 2, 'cell_type': 'LSTM', 'vocabulary_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/vocabulary.csv', 'vocabulary_size': 5000, 'learning_rate': 0.0001, 'weight_decay': 1e-05, 'num_epochs': 10, 'batch_size': 16}
+Compose(
+    Resize(size=256, interpolation=bilinear, max_size=None, antialias=None)
+    RandomCrop(size=(224, 224), padding=None)
+    RandomHorizontalFlip(p=0.5)
+    RandomRotation(degrees=[-30.0, 30.0], interpolation=nearest, expand=False, fill=0)
+    ColorJitter(brightness=(0.3, 1.3), contrast=(0.3, 1.3), saturation=(0.3, 1.3), hue=(-0.2, 0.2))
+    GaussianBlur(kernel_size=(3, 3), sigma=(0.1, 2.0))
+    ToTensor()
+    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+)
+Epoch 0 took 0:44:36.494224
+Epoch [1/10], Loss:  3.5913
+Eval after epoch 0 took 0:00:26.512793
+Bleu@4: 0.10031370534168113
+CIDEr: 0.3207196800696203
+ROUGE-L: 0.3573052447563152
+New best CIDEr score is 0.3207196800696203
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a dog laying on a bed with a stuffed.']
+['a street street with with and and lights lights.']
+['a man standing a a to with a luggage.']
+['a cat sitting on a desk next to a laptop.']
+['a white of with sitting sitting a a of.']
+Epoch 1 took 0:47:40.317621
+Epoch [2/10], Loss:  3.0928
+Eval after epoch 1 took 0:00:27.084934
+Bleu@4: 0.10631292369698965
+CIDEr: 0.3468377781198315
+ROUGE-L: 0.3631211838125789
+New best CIDEr score is 0.3468377781198315
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a old of with sitting on top of a.']
+['a man of a woman standing a a in.']
+['a man standing a to sign a a sign sign a a.']
+['a man eating a slice of pizza pizza a a.']
+['a cat cat on on desk desk a a and and computer computer.']
+Epoch 2 took 0:53:25.309599
+Epoch [3/10], Loss:  2.9535
+Eval after epoch 2 took 0:00:27.626637
+Bleu@4: 0.10434211645491119
+CIDEr: 0.349117924245044
+ROUGE-L: 0.35863769189177086
+New best CIDEr score is 0.349117924245044
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a dog sitting on a bed in a of.']
+['a person is a a on on skis skis a the.']
+['a boats of in sort water a a of.']
+['a man player a a racket racket a a ball.']
+['a airplane of is flying in the sky.']
+Epoch 3 took 0:53:21.747060
+Epoch [4/10], Loss:  2.8576
+Eval after epoch 3 took 0:00:33.443111
+Bleu@4: 0.11137367517350195
+CIDEr: 0.36316674900419227
+ROUGE-L: 0.36513468983007086
+New best CIDEr score is 0.36316674900419227
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a cat sitting on a desk next to a computer monitor.']
+['a apples of oranges apples a a and.']
+['a man in a suit and tie standing in a woods.']
+['a baseball player holding a bat on a field.']
+['a pan of with is and in on cooking stove.']
+Epoch 4 took 0:54:01.093530
+Epoch [5/10], Loss:  2.7794
+Eval after epoch 4 took 0:00:32.357016
+Bleu@4: 0.10238197274549489
+CIDEr: 0.347656387279535
+ROUGE-L: 0.35915393513651983
+Some random captions from the model for the val set:
+['a pizza with on and sitting on a table.']
+['a plate of a and of sandwich on on table table to.']
+['a motorcycle parked parked a a and and.']
+['a man in a suit and tie is a a.']
+['a dog running a a on in of sand.']
+Epoch 5 took 0:53:58.395378
+Epoch [6/10], Loss:  2.7127
+Eval after epoch 5 took 0:00:41.428950
+Bleu@4: 0.11546264533209777
+CIDEr: 0.3701569109742938
+ROUGE-L: 0.36499420615105876
+New best CIDEr score is 0.3701569109742938
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a surfer riding a wave wave the the.']
+['a person riding skis on a snowy surface.']
+['a street sign with a clock of on building.']
+['a group of people standing bikes a a of.']
+['a people of on boats boats the the.']
+Epoch 6 took 0:53:36.853029
+Epoch [7/10], Loss:  2.6562
+Eval after epoch 6 took 0:00:42.362217
+Bleu@4: 0.1087213151264478
+CIDEr: 0.3598380371312839
+ROUGE-L: 0.3634643389226953
+Some random captions from the model for the val set:
+['a little girl sitting on a bed with a laptop.']
+['a group of people sitting on a beach next to a ocean.']
+['a man is a a on in of air.']
+['a giraffe giraffe its neck over a water of.']
+['a man is a a on on of surfboard in the ocean.']
+Epoch 7 took 0:53:40.424348
+Epoch [8/10], Loss:  2.6108
+Eval after epoch 7 took 0:00:41.861829
+Bleu@4: 0.1103976577458682
+CIDEr: 0.3690280645018052
+ROUGE-L: 0.36352440214082754
+Some random captions from the model for the val set:
+['a bathroom with a toilet, sink and and.']
+['a person holding a sandwich with a and of pickle.']
+['a boat boat the the is is the the of.']
+['a cows of in and field grazing in a field.']
+['a large of clock is on on window wall.']
+Epoch 8 took 0:53:30.951934
+Epoch [9/10], Loss:  2.5781
+Eval after epoch 8 took 0:00:42.061637
+Bleu@4: 0.1105622947348351
+CIDEr: 0.37043079612765334
+ROUGE-L: 0.3634546339712392
+New best CIDEr score is 0.37043079612765334
+Saving model at ckpts/danif_2025-04-09 11:41:07.pth
+Some random captions from the model for the val set:
+['a sign sign a a a and and building building a a light light.']
+['a cow cow on a beach beach to water water the the.']
+['a young player swinging a bat at a ball.']
+['a large airplane sitting on top of an airport runway.']
+['a baseball player throwing a ball on a field.']
+']
+Epoch 9 took 0:52:25.839787
+Epoch [10/10], Loss:  2.5590
+Eval after epoch 9 took 0:00:29.997273
+Bleu@4: 0.11220644170887492
+CIDEr: 0.3714443516481644
+ROUGE-L: 0.3639204160430041
+New best CIDEr score is 0.3714443516481644
+Saving model at ckpts/danif_2025-04-09 11:41:00.pth
+Some random captions from the model for the val set:
+['a cat laying on a of in in of of.']
+['a clock clock on the pole of a building.']
+['a zebras of in standing wild a in in field.']
+['a buses of down buses street in a directions.']
+['a man standing a to of woman woman a on.']

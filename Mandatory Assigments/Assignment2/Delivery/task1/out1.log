@@ -1,0 +1,149 @@
+{'_root_dir': '/itf-fi-ml/home/danif/mand2/mandatory2_data', 'train_caption_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/annotations/captions_train2017.json', 'val_caption_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/annotations/captions_val2017.json', 'val_images_dir': '/itf-fi-ml/home/danif/mand2/mandatory2_data/val2017', 'resnet50_features_train_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/coco_train_resnet18_layer4_features.pkl', 'resnet50_features_val_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/coco_val_resnet18_layer4_features.pkl', 'max_caption_length': 30, 'embedding_size': 512, 'hidden_size': 512, 'use_attention': False, 'feature_size': 512, 'num_layers': 1, 'cell_type': 'RNN', 'vocabulary_file': '/itf-fi-ml/home/danif/mand2/mandatory2_data/vocabulary.csv', 'vocabulary_size': 5000, 'learning_rate': 0.0001, 'weight_decay': 1e-05, 'num_epochs': 10, 'batch_size': 16}
+Compose(
+    Resize(size=256, interpolation=bilinear, max_size=None, antialias=None)
+    RandomCrop(size=(224, 224), padding=None)
+    RandomHorizontalFlip(p=0.5)
+    RandomRotation(degrees=[-30.0, 30.0], interpolation=nearest, expand=False, fill=0)
+    ColorJitter(brightness=(0.3, 1.3), contrast=(0.3, 1.3), saturation=(0.3, 1.3), hue=(-0.2, 0.2))
+    GaussianBlur(kernel_size=(3, 3), sigma=(0.1, 2.0))
+    ToTensor()
+    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+)
+Epoch 0 took 0:12:27.967019
+Epoch [1/10], Loss:  2.8072
+Eval after epoch 0 took 0:00:31.413619
+Bleu@4: 0.17535640861134083
+CIDEr: 0.4903566279226957
+ROUGE-L: 0.39931621795045585
+New best CIDEr score is 0.4903566279226957
+Saving model at ckpts/danif_2025-04-08 13:33:29.pth
+Some random captions from the model for the val set:
+['a man standing on a snow covered slope with a snowboard.']
+['a bus is driving down the road in front of a building.']
+['a pizza sitting on top of a white plate.']
+['a teddy bear sitting on top of a teddy bear.']
+['a plate of food with a sandwicEpoch 1 took 0:1Epoch 1 took 0:12:42.099533
+Epoch [2/10]Eval after epochEval after epoch 1 took 0:00:31.005811
+Bleu@4: 0.1899021700679821
+CIDEr: 0.5466545777477779
+ROUGE-L: 0.4135036257722855
+New best CIDEr score is 0.5466545777477779
+Saving model at ckpts/danif_2025-04-08 13:33:29.pth
+Some random captions from the model for the val set:
+['a man holding a tennis racquet on a tennis court.']
+['a bed with a white comforter and a window.']
+['a cat laying on a bed with a laptop.']
+['a group of people standing around a table with a large cake.']
+['a herd of eleEpoch 2 took 0:13:32.574729
+Epoch [3/10], LoEpoch 2 tookEval after epoch 2 took 0:00:30.543676
+Bleu@Eval after epoch 2 took 0:00:33.215617
+Bleu@4: 0.19293538088412257
+CIDEr: 0.5491962322360412
+ROUGE-L: 0.41366881494442953
+New best CIDEr score is 0.5491962322360412
+Saving model at ckpts/danif_2025-04-08 13:33:29.pth
+Some random captions from the model for the val set:
+['a man is holding a wii remote in his hand.']
+['a zebra and a zebra grazing in a field.']
+['a woman is sitting on a couch holding a wii remote.']
+['a group of people standing on aEpoch 3 took 0:13:52.802842
+Epoch [4/10], Loss:  2.1946
+Eval after epoch 3 took 0:00:30.571947
+Bleu@4: 0.20407735007433206
+CIDEr: 0.5790Eval after epoch 3 took 0:00:31.733551
+Bleu@4: 0.1954010396454796
+CIDEr: 0.5650016050303744
+ROUGE-L: 0.41753253479808083
+New best CIDEr score is 0.5650016050303744
+Saving model at ckpts/danif_2025-04-08 13:33:29.pth
+Some random captions from the model for the val set:
+['a bear in a river with a bear in the water.']
+['a suitcase packed with various items and a bag on it.']
+['a man riding a skateboard down a street.']
+['a plateEpoch 4 took 0:14:13.888871
+Epoch [5/10], Loss:  2.1416
+Eval after epoch 4 took 0:00:30.631191
+Bleu@4: 0.20158347228379014
+CIDEr: 0.5780557099561624
+ROUGE-L: 0.41747603579144027
+Some random captions from the model for the val set:
+['a plate with a sandwich and a fork on it.']
+['a man and a woman are sitting at a table.']
+['a giraffe standing next to a building with a window.']
+['a man holding a tennis racket on a tennis court.']
+['a person on a snowboard is in the snow.']
+Epoch 5 took 0:13:47.496200
+Epoch [6/10], Loss:  2.0994
+Eval after epoch 5 took 0:00:33.616869
+Bleu@4: 0.20525868801860056
+CIDEr: 0.5885470705902253
+ROUGE-L: 0.42212378512651993
+New best CIDEr score is 0.5885470705902253
+Saving model at ckpts/danif_2025-04-08 13:33:27.pth
+Some random captions from the model for the val set:
+['a man in a suit and tie standing in a field.']
+['a woman brushing her teeth with a toothbrush in her mouth.']
+['a small bird is sitting on a table.']
+['a man riding a bike down a street next to a horse.']
+['a bunch of cars that are parked on the street.']
+Epoch 6 took 0:13:43.022668
+Epoch [7/10], Loss:  2.0658
+Eval after epoch 6 took 0:00:32.091759
+Bleu@4: 0.20165066697967385
+CIDEr: 0.5743802303443462
+ROUGE-L: 0.41874122135030994
+Some random captions from the model for the val set:
+['a plate of food with a sandwich and a cup of coffee.']
+['a desk with a laptop and a monitor.']
+['a giraffe standing in a field with a tree in the background.']
+['a plate with a sandwich and a cup of coffee.']
+['a zebra standing next to a zebra in a field.']
+Epoch 7 took 0:13:42.427190
+Epoch [8/10], Loss:  2.0397
+Eval after epoch 7 took 0:00:34.810309
+Bleu@4: 0.20038712181569757
+CIDEr: 0.5860543001386889
+ROUGE-L: 0.4204412085513144
+Some random captions from the model for the val set:
+['a bed with a wooden headboard and a bed.']
+['a man sitting at a table with a laptop computer.']
+['a white toilet sitting next to a white sink.']
+['a brown bear is standing in a zoo enclosure.']
+['a group of people standing around a train.']
+Epoch 8 took 0:12:45.455317
+Epoch [9/10], Loss:  2.0213
+Eval after epoch 8 took 0:00:31.994163
+Bleu@4: 0.2025345647637447
+CIDEr: 0.5801829582250223
+ROUGE-L: 0.4214003366706397
+Some random captions from the model for the val set:
+['a white and blue vase with a white flower and a white flower.']
+['a group of people standing on top of a lush green field.']
+['a kite flying in the sky above a city.']
+['a horse grazing in a field with a house in the background.']
+['a person holding a pizza with a knife and fork.']
+Epoch 9 took 0:12:45.364837
+Epoch [10/10], Loss:  2.0104
+Eval after epoch 9 took 0:00:34.620266
+Bleu@4: 0.20233469210421406
+CIDEr: 0.5828222964414079
+ROUGE-L: 0.4223857563029638
+Some random captions from the model for the val set:
+['a man in a suit and tie standing in front of a bathroom.']
+['a pizza with a slice missing on it.']
+['a cat is sitting on a table next to a cat.']
+['a red stop sign on a pole in front of a building.']
+['a herd of elephants walking through a river.']
+], Loss:  2.0105
+Eval after epoch 9 took 0:00:29.832093
+Bleu@4: 0.20415114073200724
+CIDEr: 0.5876004149962719
+ROUGE-L: 0.42242231705245614
+New best CIDEr score is 0.5876004149962719
+Saving model at ckpts/danif_2025-04-08 13:33:29.pth
+Some random captions from the model for the val set:
+['a bride and groom are cutting a cake.']
+['a man in a suit and tie standing in a kitchen.']
+['a plate of food with a fork and a spoon.']
+['a large colorful umbrella is sitting on a beach.']
+['a train is parked on the tracks in a field.']
