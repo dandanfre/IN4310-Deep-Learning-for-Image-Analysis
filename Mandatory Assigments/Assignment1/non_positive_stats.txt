@@ -1,0 +1,7 @@
+Module Name | Avg. % of Non-Positive Values
+--------------------------------------------------
+layer1.0.conv1 | 73.63%
+layer2.0.conv1 | 66.76%
+layer3.0.conv1 | 76.42%
+layer4.0.conv1 | 79.90%
+layer4.1.conv2 | 49.54%
