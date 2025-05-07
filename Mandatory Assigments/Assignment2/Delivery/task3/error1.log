@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/itf-fi-ml/home/danif/mand2/train.py", line 231, in <module>
+    train()
+  File "/itf-fi-ml/home/danif/mand2/train.py", line 194, in train
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
